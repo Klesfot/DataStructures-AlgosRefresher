@@ -4,6 +4,11 @@
     {
         public static void Main(string[] args)
         {
+            BinarySearchInArrayList();
+        }
+
+        private void FindArr1ElemsInArr2()
+        {
             // Testing the HashTable using a common problem of finding elements
             // of one array in another
             int[] arr1 = new int[] { 56, 7, 14, 12, 2, 9, 8 };
@@ -28,6 +33,17 @@
             {
                 Console.WriteLine(ht.Find(Convert.ToString(arr1[i])));
             }
+        }
+
+        private static void BinarySearchInArrayList()
+        {
+            var al = new ArrayList<int>();
+            al.Add(9).Add(14).Add(2).Add(5).Add(12).Add(3).Add(7);
+            al.Sort(SortType.Merge); // 0, 2, 3, 5, 7, 9, 12, 14
+            Console.WriteLine();
+            Console.WriteLine(al.Find(2)); // exists, 1
+            Console.WriteLine(al.Find(12)); // exists, 6
+            Console.WriteLine(al.Find(6)); // does not exist, -1
         }
     }
 }
