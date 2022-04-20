@@ -8,19 +8,18 @@ namespace DataStructuresAlgosRefresher.DataStructures
         Quick
     }
 
-    internal class ArrayList<T>: IEnumerable<T>
-        where T : IComparable<T>
+    internal class ArrayList
     {
-        private T[] _array;
+        private int[] _array;
 
         public ArrayList()
         {
-            _array = new T[1];
+            _array = new int[1];
         }
 
-        public ArrayList<T> Add(T value)
+        public ArrayList Add(int value)
         {
-            T[] temp = new T[_array.Length + 1];
+            int[] temp = new int[_array.Length + 1];
             for (int i = 0; i < _array.Length; i++)
             {
                 temp[i] = _array[i];
@@ -33,10 +32,10 @@ namespace DataStructuresAlgosRefresher.DataStructures
 
         public void Clear()
         {
-            _array = new T[1];
+            _array = new int[1];
         }
 
-        public int Find(T element)
+        public int Find(int element)
         {
             return RecursiveBinarySearch(element, _array, 0, _array.Length - 1);
         }
@@ -58,29 +57,16 @@ namespace DataStructuresAlgosRefresher.DataStructures
         public void Print()
         {
             Console.WriteLine();
-            foreach (T item in _array)
+            foreach (int item in _array)
             {
                 Console.WriteLine(item);
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            foreach (T item in _array)
-            {
-                yield return item;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-
-        private int RecursiveBinarySearch(T element, T[] arr, int beginIndex, int endIndex)
+        private int RecursiveBinarySearch(int element, int[] arr, int beginIndex, int endIndex)
         {
             var mid = (beginIndex + endIndex) / 2;
-            if (EqualityComparer<T>.Default.Equals(arr[mid], element))
+            if (EqualityComparer<int>.Default.Equals(arr[mid], element))
             {
                 return mid;
             }
@@ -102,26 +88,26 @@ namespace DataStructuresAlgosRefresher.DataStructures
             return -1;
         }
 
-        private T[] MergeSort(T[] arr)
+        private int[] MergeSort(int[] arr)
         {
-            T[] left;
-            T[] right;
-            var result = new T[arr.Length];
+            int[] left;
+            int[] right;
+            var result = new int[arr.Length];
             if (arr.Length <= 1) // base case
             {
                 return arr;
             }
 
             int mid = arr.Length / 2;
-            left = new T[mid];
+            left = new int[mid];
 
             if (arr.Length % 2 == 0)
             {
-                right = new T[mid];
+                right = new int[mid];
             }
             else
             {
-                right = new T[mid + 1];
+                right = new int[mid + 1];
             }
 
             for (int i = 0; i < mid; i++)
@@ -143,10 +129,10 @@ namespace DataStructuresAlgosRefresher.DataStructures
             return result;
         }
 
-        private T[] Merge(T[] left, T[] right)
+        private int[] Merge(int[] left, int[] right)
         {
             int resultLen = left.Length + right.Length;
-            T[] result = new T[resultLen];
+            int[] result = new int[resultLen];
 
             int indexL = 0;
             int indexR = 0;
@@ -186,9 +172,56 @@ namespace DataStructuresAlgosRefresher.DataStructures
             return result;
         }
 
-        private T[] QuickSort(T[] arr)
+        private int[] QuickSort(int[] arr)
         {
-            throw new NotImplementedException();
+            return RecursiveQuickSort(arr, 0, arr.Length - 1);
+        }
+
+        private int[] RecursiveQuickSort(int[] arr, int left, int right)
+        {
+            if (left >= right)
+            {
+                return arr;
+            }
+
+            var pivot = arr[(left + right) / 2];
+            var index = Partition(arr, left, right, pivot);
+            RecursiveQuickSort(arr, left, index - 1);
+            RecursiveQuickSort(arr, index, right);
+
+            return arr;
+        }
+
+        private int Partition(int[] arr, int left, int right, int pivot)
+        {
+            while (left <= right)
+            {
+                while (arr[left] < pivot)
+                {
+                    left++;
+                }
+
+                while (arr[right] > pivot)
+                {
+                    right--;
+                }
+
+                if (left <= right)
+                {
+                    arr = Swap(arr, left, right);
+                    left++;
+                    right--;
+                }
+            }
+            return left;
+        }
+
+        private int[] Swap(int[] arr, int left, int right)
+        {
+            var temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            return arr;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            LinkedListTest();
+            BinarySearchInArrayList();
         }
 
         private void FindArr1ElemsInArr2()
@@ -39,9 +39,9 @@ namespace DataStructuresAlgosRefresher
 
         private static void BinarySearchInArrayList()
         {
-            var al = new ArrayList<int>();
+            var al = new ArrayList();
             al.Add(9).Add(14).Add(2).Add(5).Add(12).Add(3).Add(7);
-            al.Sort(SortType.Merge); // 0, 2, 3, 5, 7, 9, 12, 14
+            al.Sort(SortType.Quick); // 0, 2, 3, 5, 7, 9, 12, 14
             Console.WriteLine();
             Console.WriteLine(al.Find(2)); // exists, 1
             Console.WriteLine(al.Find(12)); // exists, 6
