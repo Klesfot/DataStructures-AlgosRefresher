@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            PrefixTreeTest();
+            LinkedListTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -72,6 +72,22 @@ namespace DataStructuresAlgosRefresher
             Console.WriteLine(pt.Search("cass")); // false
             Console.WriteLine(pt.StartsWith("ca")); // true
             Console.WriteLine(pt.StartsWith("cl")); //false
+        }
+
+        private static void LinkedListTest()
+        {
+            var ll = new DataStructures.LinkedList<int>();
+            ll.Append(1);
+            ll.Append(2);
+            ll.Append(3);
+            ll.Append(4);
+            ll.Append(5);
+            ll.Prepend(0);
+            ll.Find(4); // true
+            ll.Find(9); // false
+            ll.DeleteFirst(3);
+            ll.Find(3); // false
+            ll.Print(); // 0, 1, 2, 4, 5
         }
     }
 }
