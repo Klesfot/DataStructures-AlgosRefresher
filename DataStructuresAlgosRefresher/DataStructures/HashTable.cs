@@ -53,8 +53,11 @@
                 prev = node;
                 node = node.next;
             }
+
             if (node == null)
+            {
                 return -1;
+            }
             else
             {
                 Size--;
@@ -82,7 +85,9 @@
                 node = node.next;
             }
             if (node == null)
+            {
                 return -1;
+            }
             else
             {
                 return node.value;

@@ -10,26 +10,26 @@
     internal class BinarySearchTree<T>
         where T : IComparable<T>
     {
-        private Node rootNode;
+        private Node _rootNode;
 
         public BinarySearchTree(T value)
         {
-            rootNode = new Node(value);
+            _rootNode = new Node(value);
         }
 
         public void Insert(T value)
         {
-            rootNode.Insert(value);
+            _rootNode.Insert(value);
         }
 
         public bool Lookup(T value)
         {
-            return rootNode.Lookup(value);
+            return _rootNode.Lookup(value);
         }
 
         public void Print(PrintType type = PrintType.InOrder)
         {
-            rootNode.Print(type);
+            _rootNode.Print(type);
         }
 
         class Node

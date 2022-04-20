@@ -3,6 +3,7 @@
     internal class PrefixTree
     {
         private Node _rootNode;
+
         public PrefixTree()
         {
             _rootNode = new Node('\0');
@@ -59,7 +60,7 @@
             {
                 data = value;
                 isWord = false;
-                children = new Node[26];
+                children = new Node[26]; // each child can have up to 26 children (26 letters in English alphabet)
             }
         }
     }

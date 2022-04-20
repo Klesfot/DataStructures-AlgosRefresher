@@ -15,7 +15,7 @@ namespace DataStructuresAlgosRefresher.DataStructures
 
         public ArrayList()
         {
-            Clear();
+            _array = new T[1];
         }
 
         public ArrayList<T> Add(T value)
@@ -59,13 +59,17 @@ namespace DataStructuresAlgosRefresher.DataStructures
         {
             Console.WriteLine();
             foreach (T item in _array)
+            {
                 Console.WriteLine(item);
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T item in _array)
+            {
                 yield return item;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
