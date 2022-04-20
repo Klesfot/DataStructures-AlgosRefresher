@@ -1,10 +1,12 @@
-﻿namespace DataStructuresAlgosRefresher
+﻿using DataStructuresAlgosRefresher.DataStructures;
+
+namespace DataStructuresAlgosRefresher
 {
     public class DataStructuresAlgorithms
     {
         public static void Main(string[] args)
         {
-            BinarySearchInArrayList();
+            BinarySearchTreeTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -44,6 +46,21 @@
             Console.WriteLine(al.Find(2)); // exists, 1
             Console.WriteLine(al.Find(12)); // exists, 6
             Console.WriteLine(al.Find(6)); // does not exist, -1
+        }
+        
+        private static void BinarySearchTreeTest()
+        {
+            var bst = new BinarySearchTree<int>(15);
+            bst.Insert(10);
+            bst.Insert(20);
+            bst.Insert(12);
+            bst.Insert(5);
+            bst.Insert(8);
+            bst.Print(PrintType.InOrder); //  5, 8, 10, 12, 15, 20
+            bst.Print(PrintType.PreOrder); // 15, 5, 8, 10, 12, 20
+            bst.Print(PrintType.PostOrder); // 5, 8, 10, 12, 20, 15
+            Console.WriteLine($"{bst.Lookup(8)}"); // true
+            Console.WriteLine($"{bst.Lookup(2)}"); // false
         }
     }
 }

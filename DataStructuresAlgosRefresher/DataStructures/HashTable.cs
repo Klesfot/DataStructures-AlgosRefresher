@@ -1,4 +1,4 @@
-﻿namespace DataStructuresAlgosRefresher
+﻿namespace DataStructuresAlgosRefresher.DataStructures
 {
     internal class HashTable
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DataStructuresAlgosRefresher
+namespace DataStructuresAlgosRefresher.DataStructures
 {
     enum SortType
     {
