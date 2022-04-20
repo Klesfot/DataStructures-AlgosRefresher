@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            BinarySearchTreeTest();
+            PrefixTreeTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -61,6 +61,17 @@ namespace DataStructuresAlgosRefresher
             bst.Print(PrintType.PostOrder); // 5, 8, 10, 12, 20, 15
             Console.WriteLine($"{bst.Lookup(8)}"); // true
             Console.WriteLine($"{bst.Lookup(2)}"); // false
+        }
+
+        private static void PrefixTreeTest()
+        {
+            var pt = new PrefixTree();
+            pt.Insert("cats");
+            pt.Insert("cast");
+            Console.WriteLine(pt.Search("cats")); // true
+            Console.WriteLine(pt.Search("cass")); // false
+            Console.WriteLine(pt.StartsWith("ca")); // true
+            Console.WriteLine(pt.StartsWith("cl")); //false
         }
     }
 }
