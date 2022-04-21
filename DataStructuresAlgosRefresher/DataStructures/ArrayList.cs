@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace DataStructuresAlgosRefresher.DataStructures
+﻿namespace DataStructuresAlgosRefresher.DataStructures
 {
     enum SortType
     {
@@ -44,7 +42,7 @@ namespace DataStructuresAlgosRefresher.DataStructures
         {
             if (type == SortType.Merge)
             {
-                _array = MergeSort(_array);
+                _array = RecursiveMergeSort(_array);
             }
             if (type == SortType.Quick)
             {
@@ -66,7 +64,7 @@ namespace DataStructuresAlgosRefresher.DataStructures
         private int RecursiveBinarySearch(int element, int[] arr, int beginIndex, int endIndex)
         {
             var mid = (beginIndex + endIndex) / 2;
-            if (EqualityComparer<int>.Default.Equals(arr[mid], element))
+            if (arr[mid] == element)
             {
                 return mid;
             }
@@ -74,7 +72,7 @@ namespace DataStructuresAlgosRefresher.DataStructures
             {
                 return -1;
             }
-            else if (arr[mid].CompareTo(element) < 0)
+            else if (arr[mid] < element)
             {
                 beginIndex = mid + 1;
                 return RecursiveBinarySearch(element, arr, beginIndex, endIndex);
@@ -88,7 +86,7 @@ namespace DataStructuresAlgosRefresher.DataStructures
             return -1;
         }
 
-        private int[] MergeSort(int[] arr)
+        private int[] RecursiveMergeSort(int[] arr)
         {
             int[] left;
             int[] right;
@@ -122,8 +120,8 @@ namespace DataStructuresAlgosRefresher.DataStructures
                 rIndex++;
             }
 
-            left = MergeSort(left);
-            right = MergeSort(right);
+            left = RecursiveMergeSort(left);
+            right = RecursiveMergeSort(right);
             result = Merge(left, right);
 
             return result;
@@ -134,15 +132,13 @@ namespace DataStructuresAlgosRefresher.DataStructures
             int resultLen = left.Length + right.Length;
             int[] result = new int[resultLen];
 
-            int indexL = 0;
-            int indexR = 0;
-            int indexResult = 0;
+            int indexL = 0, indexR = 0, indexResult = 0;
 
             while (indexL < left.Length || indexR < right.Length)
             {
                 if (indexL < left.Length && indexR < right.Length)
                 {
-                    if (left[indexL].CompareTo(right[indexR]) < 0)
+                    if (left[indexL] <= right[indexR])
                     {
                         result[indexResult] = left[indexL];
                         indexL++;
