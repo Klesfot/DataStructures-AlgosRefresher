@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            QueueStackTest();
+            GraphTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -154,6 +154,30 @@ namespace DataStructuresAlgosRefresher
             Console.WriteLine($"Removed {qs.Remove()}");
             Console.WriteLine($"I spy {qs.Peek()}"); // I spy q
             Console.WriteLine($"Removed {qs.Remove()}");
+        }
+
+        private static void GraphTest()
+        {
+            var g = new Graph();
+            g.AddNode(1);
+            g.AddEdge(1, 2);
+            g.AddEdge(2, 3);
+            g.AddEdge(1, 4);
+            g.AddEdge(4, 12);
+            g.AddEdge(2, 5);
+            g.AddEdge(3, 6);
+            g.AddEdge(2, 3);
+            g.AddEdge(5, 7);
+            g.AddEdge(7, 11);
+            g.AddEdge(5, 9);
+            g.AddEdge(5, 10);
+            g.AddEdge(7, 9); // 
+            g.AddEdge(9, 3); // ^ check for infinite
+            Console.WriteLine($"Result {g.HasPath(SearchType.DepthFirstSearch, 1, 12)}");
+            Console.WriteLine($"Result {g.HasPath(SearchType.BreadthFirstSearch, 1, 12)}");
+            g.AddNode(77);
+            Console.WriteLine($"Result {g.HasPath(SearchType.DepthFirstSearch, 1, 77)}");
+            Console.WriteLine($"Result {g.HasPath(SearchType.BreadthFirstSearch, 1, 77)}");
         }
     }
 }
