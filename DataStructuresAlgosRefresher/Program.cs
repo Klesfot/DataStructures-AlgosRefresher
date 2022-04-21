@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            GraphTest();
+            HeapTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -178,6 +178,20 @@ namespace DataStructuresAlgosRefresher
             g.AddNode(77);
             Console.WriteLine($"Result {g.HasPath(SearchType.DepthFirstSearch, 1, 77)}");
             Console.WriteLine($"Result {g.HasPath(SearchType.BreadthFirstSearch, 1, 77)}");
+        }
+
+        private static void HeapTest()
+        {
+            var mh = new MinHeap();
+            mh.Add(12);
+            mh.Add(22);
+            mh.Add(33);
+            mh.Add(44);
+            mh.Add(55);
+            Console.WriteLine(mh.Poll()); // 12
+            Console.WriteLine(mh.Peek()); // 22
+            mh.Add(66);
+            Console.WriteLine(mh.Peek()); // 22
         }
     }
 }
