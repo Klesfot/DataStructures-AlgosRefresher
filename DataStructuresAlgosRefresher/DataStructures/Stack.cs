@@ -1,15 +1,15 @@
 ﻿namespace DataStructuresAlgosRefresher.DataStructures
 {
-    internal class Stack
+    internal class Stack<T>
     {
-        private Node? _top;
+        private Node<T>? _top;
         
         public bool IsEmpty()
         {
             return _top == null;
         }
 
-        public int Peek()
+        public T Peek()
         {
             if (_top == null)
             {
@@ -19,20 +19,20 @@
             return _top.data;
         }
 
-        public void Push(int data)
+        public void Push(T data)
         {
             if (_top == null)
             {
-                _top = new Node(data);
+                _top = new Node<T>(data);
                 return;
             }
 
-            var node = new Node(data);
+            var node = new Node<T>(data);
             node.next = _top;
             _top = node;
         }
 
-        public int Pop()
+        public T Pop()
         {
             if (_top == null)
             {
@@ -44,12 +44,12 @@
             return data;
         }
 
-        public class Node
+        public class Node<T>
         {
-            public int data;
-            public Node? next;
+            public T data;
+            public Node<T>? next;
 
-            public Node(int data)
+            public Node(T data)
             {
                 this.data = data;
                 next = null;

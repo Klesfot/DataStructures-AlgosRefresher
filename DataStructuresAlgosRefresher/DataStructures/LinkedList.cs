@@ -1,6 +1,7 @@
 ﻿namespace DataStructuresAlgosRefresher.DataStructures
 {
-    internal class LinkedList<T> where T : IComparable<T>
+    internal class LinkedList<T>
+        where T : IComparable<T>
     {
         private Node _rootNode;
 

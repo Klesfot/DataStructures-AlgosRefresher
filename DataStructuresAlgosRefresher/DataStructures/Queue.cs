@@ -1,16 +1,16 @@
 ﻿namespace DataStructuresAlgosRefresher.DataStructures
 {
-    internal class Queue
+    internal class Queue<T>
     {
-        private Node? _tail;
-        private Node? _head;
+        private Node<T>? _tail;
+        private Node<T>? _head;
 
         public bool IsEmpty()
         {
             return _head == null;
         }
 
-        public int Peek()
+        public T Peek()
         {
             if (_head == null)
             {
@@ -20,9 +20,9 @@
             return _head.data;
         }
 
-        public void Add(int value)
+        public void Add(T value)
         {
-            var node = new Node(value);
+            var node = new Node<T>(value);
             if (_tail != null)
             {
                 _tail.next = node;
@@ -35,14 +35,14 @@
             }
         }
 
-        public int Remove()
+        public T Remove()
         {
             if (_head == null)
             {
                 throw new InvalidOperationException("Queue was empty");
             }
 
-            int data = _head.data;
+            T data = _head.data;
             _head = _head.next;
 
             if (_head == null)
@@ -53,12 +53,12 @@
             return data;
         }
 
-        public class Node
+        public class Node<T>
         {
-            public int data;
-            public Node? next;
+            public T data;
+            public Node<T>? next;
             
-            public Node(int data)
+            public Node(T data)
             {
                 this.data = data;
                 next = null;
