@@ -112,7 +112,7 @@ namespace DataStructuresAlgosRefresher
 
             Console.WriteLine();
 
-            var q = new Queue();
+            var q = new DataStructures.Queue<int>();
             q.Add(1);
             q.Add(6);
             q.Add(12);
@@ -123,12 +123,22 @@ namespace DataStructuresAlgosRefresher
             Console.WriteLine($"Removed {q.Remove()}");
             try
             {
-                q.Peek();
+                _ = q.Peek();
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message); // Queue was empty
             }
+
+            var qs = new DataStructures.Queue<string>();
+            qs.Add("a");
+            qs.Add("s");
+            qs.Add("q");
+            Console.WriteLine($"I spy {qs.Peek()}"); // I spy a
+            Console.WriteLine($"Removed {qs.Remove()}");
+            Console.WriteLine($"Removed {qs.Remove()}");
+            Console.WriteLine($"I spy {qs.Peek()}"); // I spy q
+            Console.WriteLine($"Removed {qs.Remove()}");
         }
     }
 }

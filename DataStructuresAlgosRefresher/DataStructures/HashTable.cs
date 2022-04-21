@@ -107,7 +107,7 @@
         }
     }
 
-    internal class HTNode
+    public class HTNode
     {
         public string key;
         public int value;
