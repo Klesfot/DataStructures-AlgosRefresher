@@ -6,7 +6,7 @@ namespace DataStructuresAlgosRefresher
     {
         public static void Main(string[] args)
         {
-            BinarySearchInArrayList();
+            QueueStackTest();
         }
 
         private void FindArr1ElemsInArr2()
@@ -88,6 +88,47 @@ namespace DataStructuresAlgosRefresher
             ll.DeleteFirst(3);
             ll.Find(3); // false
             ll.Print(); // 0, 1, 2, 4, 5
+        }
+
+        private static void QueueStackTest()
+        {
+            var s = new Stack();
+            s.Push(1);
+            s.Push(6);
+            s.Push(12);
+            Console.WriteLine($"I spy {s.Peek()}"); // I spy 12
+            Console.WriteLine($"Popped {s.Pop()}");
+            Console.WriteLine($"I spy {s.Peek()}"); // I spy 6
+            Console.WriteLine($"Popped {s.Pop()}");
+            Console.WriteLine($"Popped {s.Pop()}");
+            try
+            {
+                _ = s.Pop(); // same if Peek'd
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Stack was empty
+            }
+
+            Console.WriteLine();
+
+            var q = new Queue();
+            q.Add(1);
+            q.Add(6);
+            q.Add(12);
+            Console.WriteLine($"I spy {q.Peek()}"); // I spy 1
+            Console.WriteLine($"Removed {q.Remove()}");
+            Console.WriteLine($"Removed {q.Remove()}");
+            Console.WriteLine($"I spy {q.Peek()}"); // I spy 12
+            Console.WriteLine($"Removed {q.Remove()}");
+            try
+            {
+                q.Peek();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message); // Queue was empty
+            }
         }
     }
 }
